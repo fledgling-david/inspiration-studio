@@ -1,0 +1,36 @@
+{
+  "schedule": {
+    "enabled": true,
+    "frequency": "daily",
+    "time": "09:17",
+    "timezone": "Asia/Shanghai",
+    "runner": "github_actions",
+    "cron_utc": "17 1 * * *"
+  },
+  "request_budget_per_channel": 90,
+  "max_inspections_per_channel": 16,
+  "refresh_days": 7,
+  "queries_per_run": 4,
+  "channels": {
+    "image": {
+      "label": "生图艺术",
+      "queries": [
+        "image generation skill", "photo poster skill", "zine skill",
+        "creative image skills", "collage poster skill", "riso illustration skill",
+        "embroidery skill", "生图 skills", "photo abstraction skill",
+        "ComfyUI creative workflow", "nano banana prompts", "image editing SKILL.md"
+      ],
+      "indexes": ["tluy/skill-zine-summary", "xuxufei12/awesome-ai-creative-skills"]
+    },
+    "video": {
+      "label": "视频剪辑",
+      "queries": [
+        "video editing skill", "remotion skills", "capcut skill",
+        "video workflow ffmpeg", "vlog editing skill", "subtitle video skill",
+        "剪辑 skills", "short video agent", "video editing agent",
+        "n8n video workflow", "cinematic video skill", "video production SKILL.md"
+      ],
+      "indexes": ["xuxufei12/awesome-ai-creative-skills"]
+    }
+  }
+}

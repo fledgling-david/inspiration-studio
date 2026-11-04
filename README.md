@@ -25,9 +25,20 @@
 
 `docs/` 是无需构建的完整网站。可用任意静态 HTTP 服务预览。
 
-GitHub Pages 从 `main` 分支的 `/docs` 目录发布；提交并推送该目录的更新后，GitHub 自动重新部署。
+GitHub Actions 自动将 `docs/` 发布到 GitHub Pages；提交前端修改后也会自动重新部署。
 
-在线版展示最新一次提交的资料快照。本机原采集器的新发现，需要同步到 `docs/data/catalogue.json` 并推送后才会出现在网上。小红书、X 等平台目前支持手动收录链接。
+## 每日自动收录
+
+每天北京时间 **09:17**（UTC 01:17），GitHub 云端会分别搜索生图与剪辑方向的公开项目：轮换关键词与索引 → 读取匹配的 Skill / 项目说明 → 提取来源、许可与公开样图 → 去重保留 → 更新网站。计划运行可能受 GitHub 调度影响而延迟。
+
+- 两个方向分别记录新增、检查数量、队列与失败来源；一个来源失败会保留已有资料。
+- 新发现进入「自动发现」候选区，可按生图 / 剪辑切换；人工精选库保留。
+- 普通 Python 脚本，不调用 AI，不安装或运行收录到的项目代码，无需保持个人电脑开机。
+- 页面每 5 分钟检查数据更新；「收录动态」可查看两个方向的最近结果与云端运行记录。
+- 从 GitHub Actions 手动运行 `Daily collection and Pages` 也可立即收录；关闭 `collect` 输入则只部署网站。
+- [采集配置](collector/sources.json)控制关键词、时间与请求预算；[运行记录](https://github.com/fledgling-david/inspiration-studio/actions/workflows/daily-collect.yml)可查看每次执行。
+
+小红书、X 等平台目前支持手动收录链接，尚未接通自动采集。
 
 收藏、个人笔记和创作清单保存在浏览器 localStorage。不同网址、浏览器和设备之间，使用「数据与备份」迁移。
 

@@ -1,0 +1,71 @@
+name: Daily collection and Pages
+
+on:
+  schedule:
+    # 01:17 UTC = 09:17 Asia/Shanghai. GitHub may delay scheduled runs.
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+    inputs:
+      collect:
+        description: 'Collect fresh image and video candidates before deploying'
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths: ['docs/**', 'collector/**', '.github/workflows/daily-collect.yml']
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: inspiration-studio-pages
+  cancel-in-progress: false
+
+jobs:
+  collect-and-publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Verify collector and frontend
+        run: |
+          python3 -m unittest discover -s collector/tests -v
+          node --check docs/app.js
+      - name: Collect image and video candidates
+        id: collect
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.collect)
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 collector/collect.py
+      - name: Save collected data
+        if: steps.collect.outcome == 'success' || steps.collect.outcome == 'failure'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/data/catalogue.json collector/state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update image and video discoveries [skip ci]'
+            git push origin HEAD:main
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: docs
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: Report collection failures
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo 'One or more collection channels failed. Existing data and other channel results were preserved and published.' >&2
+          exit 1
