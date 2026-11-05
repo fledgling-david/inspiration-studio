@@ -20,6 +20,11 @@
 - 跨生图和剪辑组合创作清单，调整顺序，复制完整创作简报。
 - JSON 备份导入导出，兼容旧生图图录与剪辑收藏。
 - 手机导航抽屉、键盘搜索、原生对话框和减少动态效果支持。
+- 案例详情中的「安装并使用」：选择 Codex / Cursor 可打开应用并预填安装请求；Claude Code 等智能体可复制请求。用户在应用中发送后才会执行。
+- 已定位的 Skill 使用精确入口；多技能仓库会先定位对应技能。提示词案例和普通工作流不会生成 Skill 安装命令。
+- 可选终端安装方式使用 `npx skills add`，按所选智能体生成命令；网站不读取本机安装状态，也不把跳转成功当作安装完成。
+
+Codex 启动能力见 [官方 Commands 文档](https://learn.chatgpt.com/docs/app/commands)，Cursor 见 [官方 Deeplinks 文档](https://prod.cursor.com/docs/reference/deeplinks)，通用安装命令见 [Vercel Skills](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)。
 
 ## 运行与发布
 

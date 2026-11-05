@@ -212,7 +212,9 @@ def inspect_repo(api, repo, channel):
                 license=(meta.get('license') or {}).get('spdx_id') or '未标注，需核对原文', license_url='',
                 note='', verification='公开资料自动发现，尚未逐项实测', date=now(), status='待筛选',
                 featured=False, stars=meta.get('stargazers_count', 0), skill_count=len(paths),
-                last_checked=now(), source_updated=meta.get('pushed_at', ''), tree_truncated=tree.get('truncated', False))
+                last_checked=now(), source_updated=meta.get('pushed_at', ''), tree_truncated=tree.get('truncated', False),
+                install=dict(repository=repo, ref=branch, path=chosen, name=name, entry_url=source,
+                             checked_at=now()) if chosen else None)
 
 
 def merge_record(previous, fresh, discovered_from):
