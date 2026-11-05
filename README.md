@@ -10,7 +10,7 @@
 | --- | ---: |
 | 生图精选玩法 | 61 |
 | 视频剪辑资源 | 60 |
-| 自动发现候选 | 95 |
+| 自动发现候选 | 每日自动更新 |
 
 ## 体验
 
@@ -36,7 +36,7 @@ GitHub Actions 自动将 `docs/` 发布到 GitHub Pages；提交前端修改后�
 - 普通 Python 脚本，不调用 AI，不安装或运行收录到的项目代码，无需保持个人电脑开机。
 - 页面每 5 分钟检查数据更新；「收录动态」可查看两个方向的最近结果与云端运行记录。
 - 从 GitHub Actions 手动运行 `Daily collection and Pages` 也可立即收录；关闭 `collect` 输入则只部署网站。
-- [采集配置](collector/sources.json)控制关键词、时间与请求预算；[运行记录](https://github.com/fledgling-david/inspiration-studio/actions/workflows/daily-collect.yml)可查看每次执行。
+- [采集配置](collector/sources.json)维护关键词与请求预算；修改每日时间时，同步调整工作流的 UTC cron 与配置中的北京时间。[运行记录](https://github.com/fledgling-david/inspiration-studio/actions/workflows/daily-collect.yml)可查看每次执行。
 
 小红书、X 等平台目前支持手动收录链接，尚未接通自动采集。
 
