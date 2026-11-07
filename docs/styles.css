@@ -46,3 +46,5 @@ dialog{color:var(--text);background:white;border:1px solid #e0e3e8;border-radius
 
 /* Collection status remains visible in every library view. */
 .collection-badge{display:inline-flex;align-items:center;flex:none;padding:2px 6px;border-radius:5px;line-height:1.5;font-size:9px;font-weight:500;white-space:nowrap}.collection-badge.pending{background:#fff4e3;color:#94621f}.collection-badge.curated{background:#eaf4ee;color:#4a765b}.collection-badge.personal{background:#eff1f5;color:#697386}.card-meta .type-tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card-meta .meta-category{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.detail-kicker{flex-wrap:wrap}
+
+.detail-visual{justify-content:flex-start}.detail-visual .detail-image-button{flex:0 0 auto}
