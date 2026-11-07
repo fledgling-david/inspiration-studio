@@ -21,5 +21,28 @@ dialog{color:var(--text);background:white;border:1px solid #e0e3e8;border-radius
 
 .discovery-channels{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 23px}.discovery-channels button{display:flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #e1e7ef;border-radius:10px;font-size:12px;color:#7a8ba2;background:#fff}.discovery-channels svg{width:15px;height:15px}.discovery-channels button>span{font-size:10px;color:#91a1b7;padding-left:4px}.discovery-channels button.active{border-color:#bdd3ef;background:#edf4fd;color:#3a76b7}.discovery-channels button.active>span{color:#5c8fc8}.channel-status{display:flex;gap:15px;justify-content:space-between;font-size:10px;color:#8b9cb2;padding:10px 0}.channel-status b{font-weight:500;color:#667f9f}.status-errors summary{cursor:pointer}.status-mode+a{font-size:11px;color:#5385bd}@media(max-width:500px){.discovery-channels{gap:6px}.discovery-channels button{font-size:10px;padding:9px}.discovery-channels button>span{font-size:9px}.discovery-channels svg{width:13px;height:13px}}
 
+/* Discovery and provenance stay readable in both the library and case view. */
+.curator-follow{display:inline-flex;align-items:center;gap:6px;margin-top:15px;padding:8px 12px;border:1px solid #d2dce9;border-radius:8px;background:#ffffffb3;font-size:12px;color:#375b82;font-weight:550}
+.curator-follow:hover{background:#fff;border-color:#8eaccf}.curator-follow svg{width:13px;height:13px}
+.hero-meta{margin-top:15px;flex-wrap:wrap}.hero-meta a:hover{text-decoration:underline}.footer-links{display:flex;align-items:center;gap:18px;letter-spacing:0;font-size:11px;color:#566c86}
+.search-context{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;margin-top:12px;color:#596b82;font-size:12px;line-height:1.7}
+.search-context label{display:flex;align-items:center;gap:8px;flex-shrink:0}.search-context select{border:1px solid #dce2eb;background:#fff;border-radius:7px;padding:6px 8px;color:#405f83;font-size:12px;min-height:34px}
+#search-context-text{flex:1;min-width:220px}.active-filters{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.active-filters button{display:inline-flex;align-items:center;gap:7px;max-width:100%;padding:7px 10px;background:#edf3fb;border:1px solid #d8e4f4;border-radius:7px;color:#365c8a;font-size:12px;overflow-wrap:anywhere;text-align:left}
+.active-filters svg{width:12px;height:12px}.active-filters .clear-all{background:transparent;border-color:transparent;color:#5d6d81}
+.card-meta{justify-content:space-between;gap:6px;flex-wrap:wrap}
+
+.media-badge{font-size:10px;max-width:calc(100% - 20px);white-space:normal;text-align:right;line-height:1.4}
+.detail-facts{margin:0 0 20px;padding:13px 15px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc}
+.detail-facts>div{display:grid;grid-template-columns:78px minmax(0,1fr);gap:10px;margin:0 0 9px;line-height:1.7;font-size:12px}.detail-facts>div:last-child{margin-bottom:0}
+.detail-facts dt{color:#52647a;font-weight:550}.detail-facts dd{margin:0;color:#465b75;overflow-wrap:anywhere}
+.detail-source-links .text-button{font-size:12px;color:#416d9f}.private-save-hint{font-size:12px;color:#64748b}
+.detail-description,.detail-repo,.detail-image-hint,.detail-credit,.installation-hint{color:#596e87}
+.card-use{white-space:nowrap;min-height:34px}.card-description{color:#536478}
+@media(max-width:760px){.detail-close{position:absolute;min-width:36px;min-height:36px}.footer-links{flex-wrap:wrap;justify-content:center}.search-context{gap:7px}.search-context label{min-height:38px}}
+@media(max-width:500px){.hero{min-height:265px}.curator-follow{font-size:12px;min-height:36px;margin-top:12px}.hero-meta{font-size:10px;max-width:250px}.search-context{font-size:12px}#search-context-text{flex-basis:100%;min-width:0}.search-context select{min-height:38px}.active-filters button{min-height:36px}.card-meta,.card-meta .type-tag,.collection-badge{font-size:10px}.card-body h3{font-size:13px}.card-description{font-size:12px;line-height:1.65;height:40px}.card-meta .type-tag{white-space:normal}.card-author{font-size:10px}.card-author .author-name{max-width:38px}.card-use{font-size:10px;padding:7px 6px}.card-use svg{display:none}.card-actions .icon-button{width:30px;height:34px}.media-badge{font-size:9px}.detail-facts>div{grid-template-columns:1fr;gap:2px}.detail-description,.prompt-box p,.detail-section p{font-size:13px}.list-view .card-footer{width:72px}.list-view .card-use{font-size:11px;min-height:36px}.footer-links{font-size:12px}.footer-links .text-button{font-size:12px}}
+
+@media(max-width:760px){.filterbar>select{min-width:0;flex:1 1 0;width:0}.filter-toggle{flex-shrink:0}}
+
 /* Collection status remains visible in every library view. */
 .collection-badge{display:inline-flex;align-items:center;flex:none;padding:2px 6px;border-radius:5px;line-height:1.5;font-size:9px;font-weight:500;white-space:nowrap}.collection-badge.pending{background:#fff4e3;color:#94621f}.collection-badge.curated{background:#eaf4ee;color:#4a765b}.collection-badge.personal{background:#eff1f5;color:#697386}.card-meta .type-tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.card-meta .meta-category{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.detail-kicker{flex-wrap:wrap}
