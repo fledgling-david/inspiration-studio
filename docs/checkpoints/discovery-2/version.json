@@ -1,0 +1,19 @@
+{
+  "label": "Discovery 2",
+  "saved_on": "2026-11-08",
+  "source_commit": "d43766cf221a1f8432d9996d09a7ca26859433f6",
+  "source_blob_shas": {
+    "index.html": "328f4d097bf1a2cc3007d2847ed94b56b04fe447",
+    "styles.css": "d75f1297ed6439f90faf678b12677fb2220f3bc8",
+    "app.js": "4593b9ce8568fac02f64919d97c82f0b435fa290",
+    "discovery.js": "1768f34d5516b9ac394f678aec0a9fe8743a9164",
+    "install.js": "3530087fe1410a6fe46bc18a99c27e8930887212",
+    "install-ui.js": "8b4a77d5ed0c01b5d291389caf96d0e8e85dffac",
+    "data/catalogue.json": "ebea111ce5fbb2c4c9ee1fdfb5f510ad6ff74f1b"
+  },
+  "notes": [
+    "冻结页面、样式、脚本与资源数据；图片沿用公共素材目录。",
+    "独立浏览器存储，不读取或迁移正式版收藏。",
+    "加入版本提示与返回入口；使用相对素材路径适配快照目录。"
+  ]
+}

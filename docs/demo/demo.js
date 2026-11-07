@@ -1,0 +1,19 @@
+"use strict";
+const items = [{"id": "image-22", "title": "让沙丘，变成一只狐狸。", "desc": "保留光影与材质，在风景里发现另一种生命。", "scene": "photo", "label": "照片形态转译", "needs": "照片 + 生图工具", "name": "photo-form-transposition", "repo": "MickeyWzt/photo-form-transposition", "image": "../assets/image-22.jpg", "kind": "现成 Skill"}, {"id": "image-11", "title": "给平面设计，一点针脚。", "desc": "让图形和配色保留下来，让质感变得可以触摸。", "scene": "design", "label": "材质与海报实验", "needs": "原图 + 生图工具", "name": "fabric-embroidery", "repo": "hokieeeee/fabric-embroidery", "image": "../assets/image-11.jpg", "kind": "现成 Skill"}, {"id": "video-9", "title": "让你的产品，拥有镜头感。", "desc": "从真实页面出发，为产品演示选择镜头与节奏。", "scene": "video", "label": "产品短片", "needs": "Node / Remotion", "name": "Video Shotcraft", "repo": "Vincentwei1021/video-shotcraft", "image": "../assets/video-9.jpg", "kind": "现成 Skill"}, {"id": "image-9", "title": "把一段旅行，压成纸上记忆。", "desc": "提取照片中的地标与空间关系，探索纸上版画。", "scene": "photo", "label": "照片与记忆", "needs": "照片 + 生图工具", "name": "photo-relic-editorial", "repo": "wnby/photo-relic-editorial", "image": "../assets/image-9.jpg", "kind": "现成 Skill"}, {"id": "image-23", "title": "沿着风景，打开第二世界。", "desc": "保留真实的锚点，把另一部分交给绘画与想象。", "scene": "design", "label": "拼贴与视觉表达", "needs": "照片 + 生图工具", "name": "photo-second-world", "repo": "Trae1ounG/photo-second-world-skill", "image": "../assets/image-23.jpg", "kind": "现成 Skill"}, {"id": "video-15", "title": "把零散素材，剪进节拍里。", "desc": "让音乐的节拍决定切换密度，组织一支蒙太奇。", "scene": "video", "label": "节拍与蒙太奇", "needs": "Python / FFmpeg 等", "name": "Beat-Synced Edit", "repo": "ZiadAbdelkarim/beat-synced-edit", "image": "../assets/video-15.jpg", "kind": "现成 Skill"}];
+const $=s=>document.querySelector(s);
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const detail=id=>'../?v=discovery-2#all?item='+encodeURIComponent(id);
+$('#picks-grid').innerHTML=items.slice(0,3).map((r,i)=>`<article class="pick-card"><a class="pick-cover" href="${detail(r.id)}" aria-label="查看${escapeHTML(r.title)}"><img src="${r.image}" alt="${escapeHTML(r.name)} 作者公开示例" loading="lazy"><span class="pick-number">PICK / 0${i+1}</span><span class="cover-arrow" aria-hidden="true">↗</span></a><div class="pick-meta"><span>${r.label}</span><span>${r.kind}</span></div><h3><a href="${detail(r.id)}">${r.title}</a></h3><p>${r.desc}</p><div class="pick-footer"><span>准备：${r.needs}</span><a href="${detail(r.id)}">查看玩法 ↗</a></div></article>`).join('');
+let filter='all';
+function render(){
+ const query=$('#demo-search').value.trim().toLocaleLowerCase();
+ const filtered=items.filter(r=>(filter==='all'||r.scene===filter)&&(!query||[r.title,r.desc,r.label,r.needs,r.name,r.repo,r.kind].join(' ').toLocaleLowerCase().includes(query)));
+ $('#results').textContent=`${filtered.length} 个精选玩法 · 小样展示，完整资源请进入正式版`;
+ $('#explore-grid').innerHTML=filtered.map(r=>`<a class="resource-card" href="${detail(r.id)}"><img src="${r.image}" alt="${escapeHTML(r.name)} 作者示例" loading="lazy"><div class="resource-body"><span class="resource-type">${r.label} · ${r.kind}</span><h3>${r.title}</h3><p>需要：${r.needs}</p><p class="resource-repo">${r.repo} ↗</p></div></a>`).join('');
+ $('#empty').hidden=filtered.length!==0;
+ $('#full-search').href='../?v=discovery-2#all'+(query?'?q='+encodeURIComponent($('#demo-search').value.trim()):'');
+}
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render()}));
+$('#demo-search').addEventListener('input',render);
+$('#reset').addEventListener('click',()=>{filter='all';$('#demo-search').value='';document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter==='all')));render();$('#demo-search').focus()});
+render();
